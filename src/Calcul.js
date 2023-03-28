@@ -3,6 +3,27 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Checkbox from './Checkbox';
 
+
+
+class Objet {
+    constructor(){
+        this.nnbrDigit = 0;
+        this.id = 0;
+        this.arrayObjet = [];
+    }
+    get nnbrDigit(){
+        return this.nnbrDigit;
+    }
+    nnbrDigit = () => {
+        //setNbrDigitsOne(cur => [...cur, 0]);
+    }
+    popDigit(){
+        //setNbrDigitsOne((cur) => cur.slice(0, cur.length - 1));
+    }
+
+
+}
+
 const Calcul = () => {
   
     const [checkedPositive, setCheckedPositive] = useState(false);
@@ -195,7 +216,6 @@ const Calcul = () => {
 
             <button onClick={addValue}>addValue</button>
             {valueCalcul.map(value => <div className="content" dangerouslySetInnerHTML={{__html: value}}></div>)}
-
             <br></br>
 
 
