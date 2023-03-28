@@ -21,7 +21,7 @@ class Objet {
         //setNbrDigitsOne((cur) => cur.slice(0, cur.length - 1));
     }
 
-
+    
 }
 
 const Calcul = () => {
