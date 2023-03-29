@@ -5,13 +5,14 @@ import Calcul from './Calcul';
 import Copyright from './Copyright';
 
 const Home = () => {
- 
+
     return (
         <>
-        <h1>HOME</h1>
-        <Link to="/calcul">Calcul</Link>
-        <Link to="/copyright">Copyright</Link>
-        <Link to="/multiplication">Multiplication</Link>
+            <h3>HOME</h3>
+            <Link to="/calcul">Calcul</Link>
+            <Link to="/copyright">Copyright</Link>
+            <Link to="/multiplication">Multiplication</Link>
+            <h1>GLOW MATH</h1>
         </>
 
     );

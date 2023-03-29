@@ -4,6 +4,7 @@ import Home from './Home';
 import Copyright from './Copyright';
 import Calcul from './Calcul';
 import Multiplication from './Multiplication';
+import Training from './Training';
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Route path="/copyright" element={<Copyright />} />
         <Route path="/calcul" element={<Calcul />} />
         <Route path="/multiplication" element={<Multiplication />} />
+        <Route path="/training" element={<Training />} />
       </Routes>
     </div>
   );

@@ -8,6 +8,7 @@ const Multiplication = () => {
     const [tableHistory, setTableHistory] = useState([]);
     const [result, setResult] = useState([]);
     const [time, setTime] = useState(1000);
+    const [valInterval, setValInterval] = useState(0);
 
     let randomNumber = (max) => {
         return Math.floor(Math.random() * max);
@@ -15,19 +16,18 @@ const Multiplication = () => {
 
 
 
-
     const Tb = (val) => {
 
 
-
-        console.log(val);
+        setResult("");
+        setValInterval(val);
         let a = randomNumber(11);
         if (a === 0) {
             console.log("000");
             a = randomNumber(11);
         }
         else {
-            let b = val;
+            let b = valInterval;
             console.log(a);
             let result = a * b;
             let display = <p>{b} * {a} =  </p>;
@@ -36,6 +36,8 @@ const Multiplication = () => {
             }, time);
             setTableHistory(display);
         }
+
+        return setInterval(Tb, result + 2000);
 
     }
 
