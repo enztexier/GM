@@ -51,6 +51,7 @@ const Multiplication = () => {
 
     const [tableState, setTableState] = useState(table)
     const [selectTable, setSelectTable] = useState([])
+    const [machineArray, setMachineArray] = useState([])
     const [time, setTime] = useState(1000)
 
 
@@ -67,36 +68,43 @@ const Multiplication = () => {
 
     const Tb = (val) => {
 
-        console.log(val)
-        console.log(tableState[val].booleanState)
-
         const cur = {... tableState}
         cur[val].booleanState = !cur[val].booleanState;
         setTableState(cur)
 
-        console.log(tableState[val].booleanState);
-        console.log(tableState)
-
         if( tableState[val].booleanState === true ){
             setSelectTable(cur => [...cur, val])
-            console.log(selectTable)
         }
         else {
-            const index = selectTable.indexOf(val);
+            const index = selectTable.indexOf(val)
+            console.log(index)
             if (index > -1) {
-                setSelectTable((cur) => cur.slice(0, cur.length - 1))
-                console.log(selectTable)
-
+                selectTable.splice(index, 1)
             }
-
         }
 
     }
-
 
     let randomNumber = (max) => {
         return Math.floor(Math.random() * max)
     }
+
+    const randomMachine = () => {
+
+        let randomNbr = randomNumber(11);
+        let b =  selectTable.map(x)
+        console.log(b)
+    }
+
+    const aa = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+    let x = (num) => {
+        console.log(num);
+        let bb = aa.map(cur => num * cur);
+        return bb;
+        //console.log(bb)
+    }
+    console.log(x)
 
     return (
         <div>
@@ -107,6 +115,9 @@ const Multiplication = () => {
 
             <input type="range" min="100" max="5000" value={time} onChange={(e) => setTime(e.target.value)}></input>
             <h1>{time}</h1>
+            {selectTable.map(val => <p key={val}>{val}</p>)}
+
+            <button onClick={randomMachine}>GO</button>
 
 
 
