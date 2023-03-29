@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Checkbox from './Checkbox';
 
@@ -6,39 +6,43 @@ const Multiplication = () => {
 
     //const tableIndicative = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     const table = {
-        table1: {
+        1: {
             digit: 1,
             booleanState: false
         },
-        table2: {
+        2: {
             digit: 2,
             booleanState: false
         },
-        table3: {
+        3: {
             digit: 3,
             booleanState: false
         },
-        table4: {
+        4: {
             digit: 4,
             booleanState: false
         },
-        table5: {
+        5: {
             digit: 5,
             booleanState: false
         },
-        table6: {
+        6: {
             digit: 6,
             booleanState: false
         },
-        table7: {
+        7: {
             digit: 7,
             booleanState: false
         },
-        table9: {
+        8: {
+            digit: 8,
+            booleanState: false
+        },
+        9: {
             digit: 9,
             booleanState: false
         },
-        table10: {
+        10: {
             digit: 10,
             booleanState: false
         }
@@ -46,6 +50,10 @@ const Multiplication = () => {
 
 
     const [tableState, setTableState] = useState(table)
+    const [selectTable, setSelectTable] = useState([])
+    const [time, setTime] = useState(1000)
+
+
 
     const liste = Object.keys(tableState)
         .map(val => 
@@ -59,25 +67,35 @@ const Multiplication = () => {
 
     const Tb = (val) => {
 
-        console.log(tableState[val].booleanState);
+        console.log(val)
+        console.log(tableState[val].booleanState)
 
         const cur = {... tableState}
         cur[val].booleanState = !cur[val].booleanState;
-        setTableState(cur);
+        setTableState(cur)
 
         console.log(tableState[val].booleanState);
-        console.log(tableState);
+        console.log(tableState)
+
+        if( tableState[val].booleanState === true ){
+            setSelectTable(cur => [...cur, val])
+            console.log(selectTable)
+        }
+        else {
+            const index = selectTable.indexOf(val);
+            if (index > -1) {
+                setSelectTable((cur) => cur.slice(0, cur.length - 1))
+                console.log(selectTable)
+
+            }
+
+        }
 
     }
 
-    //const [tableHistory, setTableHistory] = useState([]);
-    //const [result, setResult] = useState([]);
-    const [time, setTime] = useState(1000);
-    //const [storyTraining, setStoryTraining] = useState([]);
-
 
     let randomNumber = (max) => {
-        return Math.floor(Math.random() * max);
+        return Math.floor(Math.random() * max)
     }
 
     return (
