@@ -188,6 +188,7 @@ const Calcul = () => {
             <Link to="/copyright">Copyright</Link>
             <Link to="/">Home</Link>
             <br></br>
+    
             <Checkbox
                 label="+"
                 value={checkedPositive}
