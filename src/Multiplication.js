@@ -51,7 +51,7 @@ const Multiplication = () => {
 
     const [tableState, setTableState] = useState(table)
     const [selectTable, setSelectTable] = useState([])
-    const [machineArray, setMachineArray] = useState([])
+    const [shuffledArray, setShuffledArray] = useState([])
     const [time, setTime] = useState(1000)
 
 
@@ -77,49 +77,24 @@ const Multiplication = () => {
         }
         else {
             const index = selectTable.indexOf(val)
-            console.log(index)
             if (index > -1) {
                 selectTable.splice(index, 1)
             }
         }
-
     }
 
-    let randomNumber = (max) => {
-        return Math.floor(Math.random() * max)
-    }
+    const suffleMachine = () => {
 
-
-    const randomMachine = () => {
-
-        //let randomNbr = randomNumber(11);
-        let tt = [];
+        let temporary = [];
 
         for (const element of selectTable) {
 
             for (let i = 1; i < 11; i++) {
                 let result = element * i
-                tt.push([element, i, result])
+                temporary.push([element, i.toString(), result.toString()])
             }
-
         }
-
-        const shuffledArray = tt.sort((a, b) => 0.5 - Math.random())
-
-        console.log(shuffledArray)
-
-
-        //let b = selectTable.map(x)
-        //console.log(b)
-    }
-
-
-    let x = (num) => {
-        //console.log(num);
-        //console.log(selectTable);
-    
-        //return cc;
-        //console.log(bb)
+        setShuffledArray(temporary.sort(() =>  Math.random() - 0.5))
     }
 
     return (
@@ -131,11 +106,10 @@ const Multiplication = () => {
 
             <input type="range" min="100" max="5000" value={time} onChange={(e) => setTime(e.target.value)}></input>
             <h1>{time}</h1>
-            {selectTable.map(val => <p key={val}>{val}</p>)}
 
-            <button onClick={randomMachine}>GO</button>
+            <button onClick={suffleMachine}>GO</button>
 
-
+            {shuffledArray.map(val => <p key={val}>{val}</p>)}
 
         </div>
     );
