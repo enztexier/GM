@@ -96,20 +96,17 @@ const Multiplication = () => {
         let tt = [];
 
         for (const element of selectTable) {
-            //console.log(element)
 
             for (let i = 1; i < 11; i++) {
                 let result = element * i
                 tt.push([element, i, result])
-                
             }
-
-
-            //tt.push([element,2,3])
 
         }
 
-        console.log(tt)
+        const shuffledArray = tt.sort((a, b) => 0.5 - Math.random())
+
+        console.log(shuffledArray)
 
 
         //let b = selectTable.map(x)
