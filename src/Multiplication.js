@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Checkbox from './Checkbox';
+import Display from './Display';
 
 const Multiplication = () => {
 
@@ -94,7 +95,7 @@ const Multiplication = () => {
                 temporary.push([element, i.toString(), result.toString()])
             }
         }
-        setShuffledArray(temporary.sort(() =>  Math.random() - 0.5))
+        setShuffledArray(temporary.sort(() => Math.random() - 0.5))
     }
 
     return (
@@ -109,7 +110,8 @@ const Multiplication = () => {
 
             <button onClick={suffleMachine}>GO</button>
 
-            {shuffledArray.map(val => <p key={val}>{val}</p>)}
+
+            <Display shuffledArray={shuffledArray}></Display>
 
         </div>
     );
@@ -119,7 +121,12 @@ export default Multiplication;
 
 /****
  * 
+ * 
+ * 
+ * 
 
+
+ {shuffledArray.map(val => <p key={val}>{val}</p>)}
 
     const Tb = (val) => {
 
