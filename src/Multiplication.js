@@ -57,22 +57,22 @@ const Multiplication = () => {
 
 
     const liste = Object.keys(tableState)
-        .map(val => 
-        <Checkbox
-            label={" Table de " + tableState[val].digit}
-            value={tableState[val].booleanState}
-            onChange={() => Tb(val)}
-            key={val}
-        />
+        .map(val =>
+            <Checkbox
+                label={" Table de " + tableState[val].digit}
+                value={tableState[val].booleanState}
+                onChange={() => Tb(val)}
+                key={val}
+            />
         )
 
     const Tb = (val) => {
 
-        const cur = {... tableState}
+        const cur = { ...tableState }
         cur[val].booleanState = !cur[val].booleanState;
         setTableState(cur)
 
-        if( tableState[val].booleanState === true ){
+        if (tableState[val].booleanState === true) {
             setSelectTable(cur => [...cur, val])
         }
         else {
@@ -89,22 +89,41 @@ const Multiplication = () => {
         return Math.floor(Math.random() * max)
     }
 
+
     const randomMachine = () => {
 
-        let randomNbr = randomNumber(11);
-        let b =  selectTable.map(x)
-        console.log(b)
+        //let randomNbr = randomNumber(11);
+        let tt = [];
+
+        for (const element of selectTable) {
+            //console.log(element)
+
+            for (let i = 1; i < 11; i++) {
+                let result = element * i
+                tt.push([element, i, result])
+                
+            }
+
+
+            //tt.push([element,2,3])
+
+        }
+
+        console.log(tt)
+
+
+        //let b = selectTable.map(x)
+        //console.log(b)
     }
 
-    const aa = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
     let x = (num) => {
-        console.log(num);
-        let bb = aa.map(cur => num * cur);
-        return bb;
+        //console.log(num);
+        //console.log(selectTable);
+    
+        //return cc;
         //console.log(bb)
     }
-    console.log(x)
 
     return (
         <div>
