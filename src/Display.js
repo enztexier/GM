@@ -12,11 +12,10 @@ const Display = ({ shuffledArray }) => {
         if(shuffledArray.length > 0) {
             setInterval(() => {
 
-                console.log(shuffledArray[i])
-                let a = shuffledArray[0].map(cur => <p>{cur}</p> )
+                let a = shuffledArray[i].map(cur => <p>{cur}</p> )
                 setDisplay(a)
                 i++
-    
+
             }, 1000)
         }
         else{
