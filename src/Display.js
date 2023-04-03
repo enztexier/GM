@@ -1,8 +1,9 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
+import Digits from './Digits';
 
 const Display = ({ shuffledArray, time }) => {
-    //console.log(shuffledArray)
+    console.log(shuffledArray)
 
     const [display, setDisplay] = useState('');
 
@@ -13,12 +14,13 @@ const Display = ({ shuffledArray, time }) => {
         i++
 
         if (shuffledArray.length > 0 && i < 10) {
-          const intervalID =  setInterval(() => {
+            const intervalID = setInterval(() => {
 
                 if (shuffledArray.length > 0 && i < 10) {
 
-                    //console.log(shuffledArray.length > 0 && i < 10)
-                    let a = shuffledArray[i].map(cur => <p>{cur}</p>)
+                    let a = shuffledArray[i].map(cur => 
+                        <Digits key={cur + 0.5} value={cur} />
+                        )
                     setDisplay(a)
                     i++
                 }
