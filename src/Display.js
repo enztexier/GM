@@ -9,9 +9,13 @@ const Display = ({ shuffledArray }) => {
     useEffect(() => {
         let i = 0
 
-        if(shuffledArray.length > 0) {
+        setDisplay(shuffledArray[i])
+        i++
+
+        if(shuffledArray.length > 0 && i < 8) {
             setInterval(() => {
 
+                console.log(shuffledArray.length > 0 && i < 7)
                 let a = shuffledArray[i].map(cur => <p>{cur}</p> )
                 setDisplay(a)
                 i++
