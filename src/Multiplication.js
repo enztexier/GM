@@ -70,7 +70,7 @@ const Multiplication = () => {
     const Tb = (val) => {
 
 
-        
+    
         const cur = { ...tableState }
         cur[val].booleanState = !cur[val].booleanState;
         setTableState(cur)
