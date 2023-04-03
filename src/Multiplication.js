@@ -113,7 +113,7 @@ const Multiplication = () => {
             <button onClick={suffleMachine}>GO</button>
 
 
-            <Display shuffledArray={shuffledArray}></Display>
+            <Display shuffledArray={shuffledArray} time={time}></Display>
 
         </div>
     );

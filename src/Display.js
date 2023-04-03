@@ -1,8 +1,8 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 
-const Display = ({ shuffledArray }) => {
-    console.log(shuffledArray)
+const Display = ({ shuffledArray, time }) => {
+    //console.log(shuffledArray)
 
     const [display, setDisplay] = useState('');
 
@@ -12,18 +12,26 @@ const Display = ({ shuffledArray }) => {
         setDisplay(shuffledArray[i])
         i++
 
-        if(shuffledArray.length > 0 && i < 8) {
-            setInterval(() => {
+        if (shuffledArray.length > 0 && i < 10) {
+          const intervalID =  setInterval(() => {
 
-                console.log(shuffledArray.length > 0 && i < 7)
-                let a = shuffledArray[i].map(cur => <p>{cur}</p> )
-                setDisplay(a)
-                i++
+                if (shuffledArray.length > 0 && i < 10) {
 
-            }, 1000)
+                    //console.log(shuffledArray.length > 0 && i < 10)
+                    let a = shuffledArray[i].map(cur => <p>{cur}</p>)
+                    setDisplay(a)
+                    i++
+                }
+                else {
+                    console.log("elseInter")
+                    setDisplay("the end")
+                    clearInterval(intervalID)
+                }
+
+            }, time)
         }
-        else{
-            console.log("else")
+        else {
+            console.log("elseOutside")
         }
 
     }, [shuffledArray])
