@@ -9,15 +9,29 @@ const Display = ({ shuffledArray, time }) => {
     const [result, setResult] = useState();
 
     useEffect(() => {
+
+
         let i = 0
 
-        console.log(shuffledArray[i])
-
-        let one = shuffledArray[i]
-        setDisplay(one)
-        i++
-
         if (shuffledArray.length > 0 && i < 10) {
+
+            let one = shuffledArray[i][0]
+            let two = shuffledArray[i][1]
+            let three = shuffledArray[i][2]
+            let show = <p>{one} x {two} = </p>
+            setDisplay(show)
+            console.log(time % 3)
+            let step = 30 * time
+            let percentage = step / 100
+            console.log(percentage)
+            setTimeout(() => {
+                setResult(three)
+              }, time > 10000 ? 4000 : percentage )
+            i++
+            setResult('')
+
+            console.log(shuffledArray[i][0])
+
             const intervalID = setInterval(() => {
 
                 if (shuffledArray.length > 0 && i < 10) {
