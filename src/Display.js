@@ -27,9 +27,14 @@ const Display = ({ shuffledArray, time }) => {
                     let three = shuffledArray[i][2]
                     let show = <p>{one} x {two} = </p>
                     setDisplay(show)
+                    console.log(time % 3)
+                    let step = 30 * time
+                    let percentage = step / 100
+                    console.log(percentage)
                     setTimeout(() => {
                         setResult(three)
-                      }, time - 500)
+
+                      }, percentage)
                     i++
                     setResult('')
 
@@ -37,6 +42,7 @@ const Display = ({ shuffledArray, time }) => {
                 else {
                     console.log("elseInter")
                     setDisplay("the end")
+                    setResult('')
                     clearInterval(intervalID)
                 }
 

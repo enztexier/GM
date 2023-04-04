@@ -53,7 +53,7 @@ const Multiplication = () => {
     const [tableState, setTableState] = useState(table)
     const [selectTable, setSelectTable] = useState([])
     const [shuffledArray, setShuffledArray] = useState([])
-    const [time, setTime] = useState(1000)
+    const [time, setTime] = useState(5000)
 
 
 
@@ -107,7 +107,7 @@ const Multiplication = () => {
 
             {liste}
 
-            <input type="range" min="100" max="5000" value={time} onChange={(e) => setTime(e.target.value)}></input>
+            <input type="range" min="1000" max="10000" value={time} onChange={(e) => setTime(e.target.value)}></input>
             <h1>{time}</h1>
 
             <button onClick={suffleMachine}>GO</button>
