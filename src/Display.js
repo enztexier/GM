@@ -34,7 +34,7 @@ const Display = ({ shuffledArray, time }) => {
                     setTimeout(() => {
                         setResult(three)
 
-                      }, percentage)
+                      }, time > 10000 ? 4000 : percentage )
                     i++
                     setResult('')
 

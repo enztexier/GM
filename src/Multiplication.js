@@ -107,7 +107,7 @@ const Multiplication = () => {
 
             {liste}
 
-            <input type="range" min="1000" max="10000" value={time} onChange={(e) => setTime(e.target.value)}></input>
+            <input type="range" min="1000" max="20000" value={time} onChange={(e) => setTime(e.target.value)}></input>
             <h1>{time}</h1>
 
             <button onClick={suffleMachine}>GO</button>
