@@ -3,13 +3,11 @@ import { useEffect, useState } from 'react';
 import Digits from './Digits';
 
 const Display = ({ shuffledArray, time }) => {
-    console.log(shuffledArray)
 
     const [display, setDisplay] = useState('');
     const [result, setResult] = useState();
 
     useEffect(() => {
-
 
         let i = 0
 
@@ -18,9 +16,10 @@ const Display = ({ shuffledArray, time }) => {
             let one = shuffledArray[i][0]
             let two = shuffledArray[i][1]
             let three = shuffledArray[i][2]
+
             let show = <p>{one} x {two} = </p>
             setDisplay(show)
-            console.log(time % 3)
+
             let step = 30 * time
             let percentage = step / 100
             console.log(percentage)
@@ -30,7 +29,6 @@ const Display = ({ shuffledArray, time }) => {
             i++
             setResult('')
 
-            console.log(shuffledArray[i][0])
 
             const intervalID = setInterval(() => {
 
@@ -41,10 +39,11 @@ const Display = ({ shuffledArray, time }) => {
                     let three = shuffledArray[i][2]
                     let show = <p>{one} x {two} = </p>
                     setDisplay(show)
-                    console.log(time % 3)
+    
                     let step = 30 * time
                     let percentage = step / 100
                     console.log(percentage)
+
                     setTimeout(() => {
                         setResult(three)
 
