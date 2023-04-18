@@ -1,6 +1,5 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import Digits from './Digits';
 
 const Display = ({ shuffledArray, time }) => {
 
@@ -20,12 +19,11 @@ const Display = ({ shuffledArray, time }) => {
             let show = <p>{one} x {two} = </p>
             setDisplay(show)
 
-            let step = 50 * time
+            let step = 30 * (time * 1000)
             let percentage = step / 100
-            //console.log(percentage)
             setTimeout(() => {
                 setResult(three)
-              }, percentage )
+            }, percentage)
             i++
             setResult('')
 
@@ -39,31 +37,27 @@ const Display = ({ shuffledArray, time }) => {
                     let three = shuffledArray[i][2]
                     let show = <p>{one} x {two} = </p>
                     setDisplay(show)
-    
-                    let step = 50 * time
+
+                    let step = 30 * (time * 1000)
                     let percentage = step / 100
-                    console.log("t " + time)
-                    console.log("p " + percentage)
 
                     setTimeout(() => {
                         setResult(three)
-
-                      }, percentage )
+                    }, percentage)
                     i++
                     setResult('')
 
                 }
                 else {
-                    //console.log("elseInter")
                     setDisplay("the end")
                     setResult('')
                     clearInterval(intervalID)
                 }
 
-            }, time)
+            }, time * 1000)
         }
         else {
-            //console.log("elseOutside")
+            console.error("shuffledArray");
         }
 
     }, [shuffledArray])

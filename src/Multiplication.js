@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Checkbox from './Checkbox';
 import Display from './Display';
+import MultiplicationInfinity from './MultiplicationInfinity';
 
 const Multiplication = () => {
 
@@ -53,7 +54,8 @@ const Multiplication = () => {
     const [tableState, setTableState] = useState(table)
     const [selectTable, setSelectTable] = useState([])
     const [shuffledArray, setShuffledArray] = useState([])
-    const [time, setTime] = useState(4000)
+    const [time, setTime] = useState(2)
+    const [infinity, setInfinity] = useState(false)
 
 
 
@@ -68,8 +70,6 @@ const Multiplication = () => {
         )
 
     const Tb = (val) => {
-
-
     
         const cur = { ...tableState }
         cur[val].booleanState = !cur[val].booleanState;
@@ -100,6 +100,20 @@ const Multiplication = () => {
         setShuffledArray(temporary.sort(() => Math.random() - 0.5))
     }
 
+    const suffleInfinity = () => {
+    
+        let temporary = [];
+
+        for (const element of selectTable) {
+
+            for (let i = 1; i < 11; i++) {
+                let result = element * i
+                temporary.push([element, i.toString(), result.toString()])
+            }
+        }
+        setInfinity(temporary)
+    }
+
     return (
         <div>
             <Link to="/">Home</Link>
@@ -107,13 +121,18 @@ const Multiplication = () => {
 
             {liste}
 
-            <input type="range" min="1000" max="20000" value={time} onChange={(e) => setTime(e.target.value)}></input>
-            <h1>{Math.floor((time * 50 / 100 / 1000) % 60)}</h1>
+            <input type="range" min="1" max="20" value={time} onChange={(e) => setTime(e.target.value)}></input>
+            <h1>{time} secondes</h1>
 
-            <button onClick={suffleMachine}>GO</button>
+            <button onClick={suffleMachine}>suffle</button>
+            <button onClick={suffleInfinity}>infinity suffle</button>
 
 
             <Display shuffledArray={shuffledArray} time={time}></Display>
+
+            <MultiplicationInfinity infinity={infinity} time={time}></MultiplicationInfinity>
+
+
 
         </div>
     );
@@ -169,7 +188,7 @@ export default Multiplication;
 
 
 
-
+Math.floor((time * 50 / 100 / 1000) % 60)
 
  * 
  * 
