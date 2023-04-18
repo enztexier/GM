@@ -20,12 +20,12 @@ const Display = ({ shuffledArray, time }) => {
             let show = <p>{one} x {two} = </p>
             setDisplay(show)
 
-            let step = 30 * time
+            let step = 50 * time
             let percentage = step / 100
-            console.log(percentage)
+            //console.log(percentage)
             setTimeout(() => {
                 setResult(three)
-              }, time > 10000 ? 4000 : percentage )
+              }, percentage )
             i++
             setResult('')
 
@@ -40,20 +40,21 @@ const Display = ({ shuffledArray, time }) => {
                     let show = <p>{one} x {two} = </p>
                     setDisplay(show)
     
-                    let step = 30 * time
+                    let step = 50 * time
                     let percentage = step / 100
-                    console.log(percentage)
+                    console.log("t " + time)
+                    console.log("p " + percentage)
 
                     setTimeout(() => {
                         setResult(three)
 
-                      }, time > 10000 ? 4000 : percentage )
+                      }, percentage )
                     i++
                     setResult('')
 
                 }
                 else {
-                    console.log("elseInter")
+                    //console.log("elseInter")
                     setDisplay("the end")
                     setResult('')
                     clearInterval(intervalID)
@@ -62,7 +63,7 @@ const Display = ({ shuffledArray, time }) => {
             }, time)
         }
         else {
-            console.log("elseOutside")
+            //console.log("elseOutside")
         }
 
     }, [shuffledArray])
@@ -118,5 +119,7 @@ export default Display;
 
     }, [shuffledArray])
 
+
+    time > 10000 ? 4000 : percentage
 
  * **/
