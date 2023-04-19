@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Checkbox from './Checkbox';
-import Display from './Display';
+import Shuffle from './Shuffle';
 import MultiplicationInfinity from './MultiplicationInfinity';
+import LinearInfinity from './LinearInfinity';
 
 const Multiplication = () => {
 
@@ -55,7 +56,8 @@ const Multiplication = () => {
     const [selectTable, setSelectTable] = useState([])
     const [shuffledArray, setShuffledArray] = useState([])
     const [time, setTime] = useState(2)
-    const [infinity, setInfinity] = useState(false)
+    const [infinityShuffle, setInfinitySuffle] = useState(false)
+    const [linearInfinit, setLinearInfinit] = useState(false)
 
 
 
@@ -111,7 +113,21 @@ const Multiplication = () => {
                 temporary.push([element, i.toString(), result.toString()])
             }
         }
-        setInfinity(temporary)
+        setInfinitySuffle(temporary)
+    }
+
+    const linearInfinity = () => {
+
+        let temporary = [];
+
+        for (const element of selectTable) {
+
+            for (let i = 1; i < 11; i++) {
+                let result = element * i
+                temporary.push([element, i.toString(), result.toString()])
+            }
+        }
+        setLinearInfinit(temporary)
     }
 
     return (
@@ -126,11 +142,13 @@ const Multiplication = () => {
 
             <button onClick={suffleMachine}>suffle</button>
             <button onClick={suffleInfinity}>infinity suffle</button>
+            <button onClick={linearInfinity}>infinity linear</button>
 
+            <Shuffle shuffledArray={shuffledArray} time={time}></Shuffle>
 
-            <Display shuffledArray={shuffledArray} time={time}></Display>
+            <MultiplicationInfinity infinityShuffle={infinityShuffle} time={time}></MultiplicationInfinity>
 
-            <MultiplicationInfinity infinity={infinity} time={time}></MultiplicationInfinity>
+            <LinearInfinity linearInfinit={linearInfinit} time={time}></LinearInfinity>
 
 
 
