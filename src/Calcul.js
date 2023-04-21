@@ -106,15 +106,29 @@ const Calcul = () => {
     }, [checkedMultiplication]);
 
 
-    
-    const addValue = () => {
 
-            
-        
+    const addValue = () => {
         setArrayValue(cur => [...cur, Value()])
         console.log(arrayValue)
-
+        console.log(arrayValue.length)
     }
+
+    const deleteValue = () => {
+        setArrayValue(arrayValue.splice(-1))
+        console.log("delete")
+    }
+
+    const addDigit = (id) => {
+        setArrayValue(arrayValue[id].nbr + 1)
+        //console.log("addDigit" + arrayValue[id].nbr)
+        //arrayValue[id].nbr = 1;
+    }
+
+    const deleteDigit = () => {
+        console.log("deleteDigit")
+    }
+
+
 
     let randomNumber = (max) => {
         return Math.floor(Math.random() * max);
@@ -146,14 +160,14 @@ const Calcul = () => {
 
     useEffect(() => {
 
-        if ( arrayValue.length > 0) {
-        const lte = Object.keys(arrayValue)
-        const lv = lte.map((val, i) => 
-        <Btnvalue key={i} nbr={arrayValue[val].nbr}></Btnvalue>
-        )
-        setListeValue(lv)
+        if (arrayValue.length > 0) {
+            const lte = Object.keys(arrayValue)
+            const lv = lte.map((id, i) =>
+                <Btnvalue key={i} nbr={arrayValue[id].nbr} addDigit={() => addDigit(id)} deleteDigit={deleteDigit}></Btnvalue>
+            )
+            setListeValue(lv)
         }
-        else{
+        else {
             console.log("arrayValue void")
         }
 
@@ -198,8 +212,9 @@ const Calcul = () => {
 
 
             <button onClick={addValue}>add value</button>
-            
-{listeValue}
+            <button onClick={deleteValue}>delete value</button>
+
+            {listeValue}
 
             <button onClick={calculFinal}>cacul</button>
             <p>{final}</p>
