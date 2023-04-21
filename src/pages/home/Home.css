@@ -27,22 +27,3 @@ body{
 .center-home{
 
 }
-
-.btn-home{
-    background-color: yellow;
-    border: none;
-    color: #070518;
-    padding: 15px 32px;
-    border-radius: 999px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-family: Intro;
-    font-size: 25px;
-    margin: 4px 4px;
-    cursor: pointer;
-}
-
-.btn-home a:visited{
-    color: #070518;
-}

@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import Checkbox from '../../components/checkbox/Checkbox';
 import Shuffle from './components/shuffle/Shuffle';
 import MultiplicationInfinity from './components/multiplicationinfinity/MultiplicationInfinity';
 import LinearInfinity from './components/linearinifinity/LinearInfinity';
+import Navbar from '../../components/navbar/Navbar';
 
 const Multiplication = () => {
 
-    //const tableIndicative = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     const table = {
         1: {
             digit: 1,
@@ -132,8 +131,8 @@ const Multiplication = () => {
 
     return (
         <div>
-            <Link to="/">Home</Link>
-            <h1>Multiplication</h1>
+            <Navbar></Navbar>
+            <h1>Table de Multiplication</h1>
 
             {liste}
 

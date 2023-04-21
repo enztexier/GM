@@ -1,0 +1,24 @@
+nav {
+    display: flex;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+}
+
+nav li {
+    padding-left: 1rem;
+}
+
+nav h2 {
+    font-family: Intro;
+    color: rgb(232, 232, 180);
+    font-size: 2em;
+    padding-left: 1rem;
+}
+
+nav a:visited {
+    color: rgb(232, 232, 180);
+}

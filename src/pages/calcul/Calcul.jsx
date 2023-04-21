@@ -1,9 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Checkbox from '../../components/checkbox/Checkbox';
 import Value from './components/value/Value';
 import Btnvalue from './components/btnvalue/Btnvalue';
+import Navbar from '../../components/navbar/Navbar';
 
 const Calcul = () => {
 
@@ -179,9 +179,8 @@ const Calcul = () => {
 
     return (
         <div>
+            <Navbar></Navbar>
             <h1>Calcul</h1>
-            <Link to="/copyright">Copyright</Link>
-            <Link to="/">Home</Link>
             <br></br>
 
             <Checkbox

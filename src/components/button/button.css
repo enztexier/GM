@@ -1,0 +1,29 @@
+.btn-master{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.7rem 2rem;
+    font-family: Intro;
+    font-weight: 700;
+    font-size: 18px;
+    text-align: center;
+    text-decoration: none;
+    color: yellow;
+    backface-visibility: hidden;
+    border: 0.3rem solid transparent;
+    border-radius: 3rem;
+    border-color: yellow;
+    background-color: transparent;
+}
+
+.btn-master a:visited{
+    color: yellow;
+}
+
+/*    
+
+font-family: "Poppins", sans-serif;
+font-family: Intro;
+
+
+*/
