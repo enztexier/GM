@@ -1,9 +1,9 @@
 import './App.css';
 import {Routes, Route} from "react-router-dom";
-import Home from './Home';
-import Copyright from './Copyright';
-import Calcul from './Calcul';
-import Multiplication from './Multiplication';
+import Home from './pages/home/Home';
+import Copyright from './pages/copyright/Copyright';
+import Calcul from './pages/calcul/Calcul';
+import Multiplication from './pages/multiplication/Multiplication';
 
 
 function App() {

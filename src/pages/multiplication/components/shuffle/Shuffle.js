@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import Display from './Display';
+import Display from '../../../../components/display/Display';
 
 const Shuffle = ({ shuffledArray, time }) => {
 

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Checkbox from './Checkbox';
-import Shuffle from './Shuffle';
-import MultiplicationInfinity from './MultiplicationInfinity';
-import LinearInfinity from './LinearInfinity';
+import Checkbox from '../../components/checkbox/Checkbox';
+import Shuffle from './components/shuffle/Shuffle';
+import MultiplicationInfinity from './components/multiplicationinfinity/MultiplicationInfinity';
+import LinearInfinity from './components/linearinifinity/LinearInfinity';
 
 const Multiplication = () => {
 

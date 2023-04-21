@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import Checkbox from './Checkbox';
-import Value from './Value';
-import Btnvalue from './Btnvalue';
+import Checkbox from '../../components/checkbox/Checkbox';
+import Value from './components/value/Value';
+import Btnvalue from './components/btnvalue/Btnvalue';
 
 const Calcul = () => {
 
