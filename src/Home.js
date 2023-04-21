@@ -7,11 +7,17 @@ const Home = () => {
 
     return (
         <>
-            <h3>HOME</h3>
-            <Link to="/calcul">Calcul</Link>
-            <Link to="/copyright">Copyright</Link>
-            <Link to="/multiplication">Multiplication</Link>
-            <h1>GLOW MATH</h1>
+            <div className='container-home'>
+                <div className='center-home'>
+                    <div>
+                        <h1 className='tracking-in-expand'>GLOWMATH</h1>
+                    </div>
+                    <div className='box-home slide-in-bottom'>
+                        <button className='btn-home'><Link to="/calcul">Calcul</Link></button>
+                        <button className='btn-home'><Link to="/multiplication">Multiplication</Link></button>
+                    </div>
+                </div>
+            </div>
         </>
 
     );
@@ -23,7 +29,7 @@ export default Home;
 /*** *
  * 
  * 
- 
+ <Link to="/copyright">Copyright</Link>
 
 
     const [nbrDigits, setNbrDigits] = useState([]);
