@@ -2,30 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Checkbox from './Checkbox';
-
-
-
-class Objet {
-    constructor(){
-        this.nnbrDigit = 0;
-        this.id = 0;
-        this.arrayObjet = [];
-    }
-    get nnbrDigit(){
-        return this.nnbrDigit;
-    }
-    nnbrDigit = () => {
-        //setNbrDigitsOne(cur => [...cur, 0]);
-    }
-    popDigit(){
-        //setNbrDigitsOne((cur) => cur.slice(0, cur.length - 1));
-    }
-
-    
-}
+import Value from './Value';
+import Btnvalue from './Btnvalue';
 
 const Calcul = () => {
-  
+
     const [checkedPositive, setCheckedPositive] = useState(false);
     const [checkedNegative, setCheckedNegative] = useState(false);
     const [checkedDivision, setCheckedDivision] = useState(false);
@@ -33,12 +14,10 @@ const Calcul = () => {
     const [operator, setOperator] = useState([]);
 
     const [nbrDigitsOne, setNbrDigitsOne] = useState([]);
-    const [nbrDigitsTwo, setNbrDigitsTwo] = useState([]);
+    const [arrayValue, setArrayValue] = useState([]);
+    const [listeValue, setListeValue] = useState([]);
 
     const [final, setFinal] = useState();
-
-    const [valueCalcul, setValueCalcul] = useState([]);
-
 
 
 
@@ -62,11 +41,12 @@ const Calcul = () => {
 
         if (checkedPositive === true) {
             operator.push('+');
+            //setOperator(cur => [...cur, '+'])
             console.log(operator);
         }
         else {
             const index = operator.indexOf('+');
-            if (index > -1) { // only splice array when item is found
+            if (index > -1) {
                 operator.splice(index, 1);
                 console.log(operator);
             }
@@ -74,11 +54,11 @@ const Calcul = () => {
 
     }, [checkedPositive]);
 
-
     useEffect(() => {
 
         if (checkedNegative === true) {
             operator.push('-');
+            //setOperator(cur => [...cur, '-'])
             console.log(operator);
         }
         else {
@@ -120,28 +100,20 @@ const Calcul = () => {
             if (index > -1) {
                 operator.splice(index, 1);
                 console.log(operator);
-
             }
         }
 
     }, [checkedMultiplication]);
 
-    const addDigit = () => {
-        setNbrDigitsOne(cur => [...cur, 0]);
-    }
 
-    const popDigit = () => {
-        setNbrDigitsOne((cur) => cur.slice(0, cur.length - 1));
-        console.log(nbrDigitsOne);
-    }
+    
+    const addValue = () => {
 
-    const addDigit2 = () => {
-        setNbrDigitsTwo(cur => [...cur, 0]);
-    }
+            
+        
+        setArrayValue(cur => [...cur, Value()])
+        console.log(arrayValue)
 
-    const popDigit2 = () => {
-        setNbrDigitsTwo((cur) => cur.slice(0, cur.length - 1));
-        console.log(nbrDigitsTwo);
     }
 
     let randomNumber = (max) => {
@@ -160,7 +132,7 @@ const Calcul = () => {
             let nine = nbrDigitsOne.map((n) => n + 9);
             let n = nine.join('');
             console.log(n);
- 
+
             let one = Math.floor(Math.random() * n);
             let two = Math.floor(Math.random() * 99);
             let result = one + two;
@@ -172,15 +144,24 @@ const Calcul = () => {
 
     }
 
+    useEffect(() => {
 
-    const addValue = () => {
-        const addDigit = console.log("laaaaa");
-        const a = '<button onClick={addDigit}>add digit</button> <button onClick={popDigit}>pop digit</button>';
-        setValueCalcul(cur => [...cur, a]);
-        console.log(valueCalcul);
-        
+        if ( arrayValue.length > 0) {
+        const lte = Object.keys(arrayValue)
+        const lv = lte.map((val, i) => 
+        <Btnvalue key={i} nbr={arrayValue[val].nbr}></Btnvalue>
+        )
+        setListeValue(lv)
+        }
+        else{
+            console.log("arrayValue void")
+        }
 
-    }
+
+    }, [arrayValue])
+
+
+
 
     return (
         <div>
@@ -188,7 +169,7 @@ const Calcul = () => {
             <Link to="/copyright">Copyright</Link>
             <Link to="/">Home</Link>
             <br></br>
-    
+
             <Checkbox
                 label="+"
                 value={checkedPositive}
@@ -215,18 +196,10 @@ const Calcul = () => {
 
             <br></br>
 
-            <button onClick={addValue}>addValue</button>
-            {valueCalcul.map(value => <div className="content" dangerouslySetInnerHTML={{__html: value}}></div>)}
-            <br></br>
 
-
-            <button onClick={addDigit}>add digit</button>
-            <button onClick={popDigit}>pop digit</button>
-            <p>{nbrDigitsOne}</p>
-
-            <button onClick={addDigit2}>add digit</button>
-            <button onClick={popDigit2}>pop digit</button>
-            <p>{nbrDigitsTwo}</p>
+            <button onClick={addValue}>add value</button>
+            
+{listeValue}
 
             <button onClick={calculFinal}>cacul</button>
             <p>{final}</p>
@@ -276,6 +249,52 @@ export default Calcul;
         console.log(operator);
     }
 
+
+
+
+
+
+
+
+
+        const addDigit = () => {
+        setNbrDigitsOne(cur => [...cur, 0]);
+    }
+
+    const popDigit = () => {
+        setNbrDigitsOne((cur) => cur.slice(0, cur.length - 1));
+        console.log(nbrDigitsOne);
+    }
+
+    const addDigit2 = () => {
+        setNbrDigitsTwo(cur => [...cur, 0]);
+    }
+
+    const popDigit2 = () => {
+        setNbrDigitsTwo((cur) => cur.slice(0, cur.length - 1));
+        console.log(nbrDigitsTwo);
+    }
+
+
+    const addValue = () => {
+        const a = '<button onClick={addDigit}>add digit</button> <button onClick={popDigit}>pop digit</button>';
+        setValueCalcul(cur => [...cur, a]);
+    }
+
+
+                <button onClick={addValue}>addValue</button>
+            {valueCalcul.map(value => <div key={value} className="content" dangerouslySetInnerHTML={{ __html: value }}></div>)}
+            <br></br>
+
+
+                        <button onClick={addDigit}>add digit</button>
+            <button onClick={popDigit}>pop digit</button>
+            <p>{nbrDigitsOne}</p>
+            
+
+            <button onClick={addDigit2}>add digit</button>
+            <button onClick={popDigit2}>pop digit</button>
+            <p>{nbrDigitsTwo}</p>
 
 
  * 

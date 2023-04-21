@@ -62,12 +62,12 @@ const Multiplication = () => {
 
 
     const liste = Object.keys(tableState)
-        .map(val =>
+        .map((val, i) =>
             <Checkbox
                 label={" Table de " + tableState[val].digit}
                 value={tableState[val].booleanState}
                 onChange={() => Tb(val)}
-                key={val}
+                key={i}
             />
         )
 

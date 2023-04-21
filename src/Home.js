@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css'
-import Calcul from './Calcul';
-import Copyright from './Copyright';
 
 
 const Home = () => {
