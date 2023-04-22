@@ -4,6 +4,9 @@ import Shuffle from './components/shuffle/Shuffle';
 import MultiplicationInfinity from './components/multiplicationinfinity/MultiplicationInfinity';
 import LinearInfinity from './components/linearinifinity/LinearInfinity';
 import Navbar from '../../components/navbar/Navbar';
+import './multiplication.css';
+import Button from '../../components/button/Button';
+import Range from '../../components/range/Range';
 
 const Multiplication = () => {
 
@@ -71,7 +74,7 @@ const Multiplication = () => {
         )
 
     const Tb = (val) => {
-    
+
         const cur = { ...tableState }
         cur[val].booleanState = !cur[val].booleanState;
         setTableState(cur)
@@ -102,7 +105,7 @@ const Multiplication = () => {
     }
 
     const suffleInfinity = () => {
-    
+
         let temporary = [];
 
         for (const element of selectTable) {
@@ -136,11 +139,16 @@ const Multiplication = () => {
             <Navbar></Navbar>
             <h1>Table de Multiplication</h1>
 
-            {liste}
+            <div className='box-checkbox'>
+                {liste}
+            </div>
 
-            <input type="range" min="1" max="20" value={time} onChange={(e) => setTime(e.target.value)}></input>
+
+            <Range time={time} setTime={setTime}></Range>
             <h1>{time} secondes</h1>
 
+
+            <Button>suffle</Button>
             <button onClick={suffleMachine}>suffle</button>
             <button onClick={suffleInfinity}>infinity suffle</button>
             <button onClick={linearInfinity}>infinity linear</button>
@@ -165,6 +173,8 @@ export default Multiplication;
  * 
  * 
 
+
+           <input type="range" min="1" max="20" value={time} onChange={(e) => setTime(e.target.value)}></input>
 
  {shuffledArray.map(val => <p key={val}>{val}</p>)}
 

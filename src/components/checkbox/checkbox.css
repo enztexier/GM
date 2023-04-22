@@ -31,7 +31,7 @@
 }
 
 .round input[type="checkbox"]:checked+label span {
-    color: blue;
+    color: #070518;
 }
 
 label span {
@@ -41,4 +41,6 @@ label span {
     align-items: center;
     height: 100%;
     font-size: 4em;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
 }

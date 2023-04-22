@@ -4,12 +4,10 @@ import './checkbox.css';
 const Checkbox = ({ label, value, onChange }) => {
     return (
         <>
-
             <div className="round">
                 <input type="checkbox" id={label} checked={value} onChange={onChange} required="required" />
                 <label htmlFor={label}><span>{label}</span></label>
             </div>
-
         </>
     );
 };
