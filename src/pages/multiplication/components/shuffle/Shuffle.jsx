@@ -58,7 +58,7 @@ const Shuffle = ({ shuffledArray, time }) => {
             }, time * 1000)
         }
         else {
-            console.error("shuffledArray");
+            console.error("error");
         }
 
     }, [shuffledArray])

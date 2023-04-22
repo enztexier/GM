@@ -63,7 +63,7 @@ const Multiplication = () => {
     const liste = Object.keys(tableState)
         .map((val, i) =>
             <Checkbox
-                label={" Table de " + tableState[val].digit}
+                label={tableState[val].digit}
                 value={tableState[val].booleanState}
                 onChange={() => Tb(val)}
                 key={i}
@@ -128,6 +128,8 @@ const Multiplication = () => {
         }
         setLinearInfinit(temporary)
     }
+
+    console.log(selectTable)
 
     return (
         <div>
