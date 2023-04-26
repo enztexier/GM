@@ -21,3 +21,14 @@
     align-items: center;
     height: 100%;
 }
+
+h2{
+    font-family: Intro;
+    text-align: center;
+}
+
+h5{
+    font-family: Intro;
+    text-align: center;
+    font-size: 25px;
+}

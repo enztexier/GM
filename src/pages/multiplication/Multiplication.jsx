@@ -60,6 +60,7 @@ const Multiplication = () => {
     const [time, setTime] = useState(2)
     const [infinityShuffle, setInfinitySuffle] = useState(false)
     const [linearInfinit, setLinearInfinit] = useState(false)
+    const [checkboxValidation, setCheckboxValidation] = useState(false)
 
     const liste = Object.keys(tableState)
         .map((val, i) =>
@@ -68,6 +69,7 @@ const Multiplication = () => {
                 value={tableState[val].booleanState}
                 onChange={() => Tb(val)}
                 key={i}
+                required
             />
         )
 
@@ -92,70 +94,92 @@ const Multiplication = () => {
 
         let temporary = [];
 
-        for (const element of selectTable) {
+        if (selectTable.length > 0) {
+            for (const element of selectTable) {
 
-            for (let i = 1; i < 11; i++) {
-                let result = element * i
-                temporary.push([element, i.toString(), result.toString()])
+                for (let i = 1; i < 11; i++) {
+                    let result = element * i
+                    temporary.push([element, i.toString(), result.toString()])
+                }
             }
+            setShuffledArray(temporary.sort(() => Math.random() - 0.5))
+            setCheckboxValidation(false)
         }
-        setShuffledArray(temporary.sort(() => Math.random() - 0.5))
+        else {
+            setCheckboxValidation(true)
+        }
+
     }
 
     const suffleInfinity = () => {
 
         let temporary = [];
 
-        for (const element of selectTable) {
+        if (selectTable.length > 0) {
+            for (const element of selectTable) {
 
-            for (let i = 1; i < 11; i++) {
-                let result = element * i
-                temporary.push([element, i.toString(), result.toString()])
+                for (let i = 1; i < 11; i++) {
+                    let result = element * i
+                    temporary.push([element, i.toString(), result.toString()])
+                }
             }
+            setInfinitySuffle(temporary)
+            setCheckboxValidation(false)
         }
-        setInfinitySuffle(temporary)
+        else {
+            setCheckboxValidation(true)
+        }
     }
 
     const linearInfinity = () => {
 
         let temporary = [];
 
-        for (const element of selectTable) {
+        if (selectTable.length > 0) {
+            for (const element of selectTable) {
 
-            for (let i = 1; i < 11; i++) {
-                let result = element * i
-                temporary.push([element, i.toString(), result.toString()])
+                for (let i = 1; i < 11; i++) {
+                    let result = element * i
+                    temporary.push([element, i.toString(), result.toString()])
+                }
             }
+            setLinearInfinit(temporary)
+            setCheckboxValidation(false)
         }
-        setLinearInfinit(temporary)
+        else {
+            setCheckboxValidation(true)
+        }
     }
 
     const backEnd = () => {
-        console.log("hello back");
-        setShuffledArray([]);
-        setSelectTable([]);
-        setTime(2);
-        setTableState(table);
-        setInfinitySuffle(false);
-        setLinearInfinit(false);
+        console.log("hello back")
+        setShuffledArray([])
+        setSelectTable([])
+        setTime(2)
+        setTableState(table)
+        setInfinitySuffle(false)
+        setLinearInfinit(false)
+        setCheckboxValidation(false)
     }
 
     return (
         <div>
             <Navbar></Navbar>
-            <h1>Table de Multiplication</h1>
+            <h2>Table de Multiplication</h2>
+
+            {checkboxValidation === true && <p style={{color: 'red'}}>choisir une table</p>}
 
             <div className='box-checkbox'>
                 {liste}
             </div>
 
             <Range time={time} setTime={setTime}></Range>
-            <h1>{time} secondes</h1>
+            <h5>{time} secondes</h5>
 
             <div className='box-mode'>
-            <Button onClick={shuffleMachine}>aléatoire</Button>
-            <Button onClick={suffleInfinity}>aléatoire infinie</Button>
-            <Button onClick={linearInfinity}>linéaire infinie</Button>
+                <Button onClick={shuffleMachine}>aléatoire</Button>
+                <Button onClick={suffleInfinity}>aléatoire infinie</Button>
+                <Button onClick={linearInfinity}>linéaire infinie</Button>
             </div>
 
             {shuffledArray.length > 0 && <div className='superposition'> <Shuffle shuffledArray={shuffledArray} time={time} backEnd={backEnd}></Shuffle> </div>}

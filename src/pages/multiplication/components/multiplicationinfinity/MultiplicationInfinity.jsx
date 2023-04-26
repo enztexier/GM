@@ -39,40 +39,38 @@ const MultiplicationInfinity = ({ infinityShuffle, time, backEnd }) => {
                 console.log(i)
                 console.log(temp)
 
-                if(i === temp){
+                if (i === temp) {
                     i = getRandomInt(infinityShuffle.length)
                     let one = infinityShuffle[i][0]
                     let two = infinityShuffle[i][1]
                     let three = infinityShuffle[i][2]
                     let show = <p>{one} x {two} = </p>
                     setDisplay(show)
-    
+
                     let step = 30 * (time * 1000)
                     let percentage = step / 100
-    
+
                     setTimeout(() => {
                         setResult(three)
                     }, percentage)
                     setResult('')
-                }else{
+                } else {
 
-                temp = i;
-                let one = infinityShuffle[i][0]
-                let two = infinityShuffle[i][1]
-                let three = infinityShuffle[i][2]
-                let show = <p>{one} x {two} = </p>
-                setDisplay(show)
+                    temp = i;
+                    let one = infinityShuffle[i][0]
+                    let two = infinityShuffle[i][1]
+                    let three = infinityShuffle[i][2]
+                    let show = <p>{one} x {two} = </p>
+                    setDisplay(show)
 
-                let step = 30 * (time * 1000)
-                let percentage = step / 100
+                    let step = 30 * (time * 1000)
+                    let percentage = step / 100
 
-                setTimeout(() => {
-                    setResult(three)
-                }, percentage)
-                setResult('')
-            }
-
-
+                    setTimeout(() => {
+                        setResult(three)
+                    }, percentage)
+                    setResult('')
+                }
             }, time * 1000)
         }
         else {
@@ -84,7 +82,6 @@ const MultiplicationInfinity = ({ infinityShuffle, time, backEnd }) => {
 
     return (
         <div>
-            <h1>Shuffle infinity</h1>
             <Display display={display} result={result} backEnd={backEnd}></Display>
         </div>
     );

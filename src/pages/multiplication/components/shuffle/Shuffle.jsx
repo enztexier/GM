@@ -65,7 +65,6 @@ const Shuffle = ({ shuffledArray, time, backEnd }) => {
 
     return (
         <div>
-            <h1>Shuffle</h1>
             <Display display={display} result={result} backEnd={backEnd}></Display>
         </div>
     );

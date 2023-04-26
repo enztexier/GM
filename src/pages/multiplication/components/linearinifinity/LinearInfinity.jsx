@@ -8,7 +8,7 @@ const LinearInfinity = ({ linearInfinit, time, backEnd }) => {
     const [result, setResult] = useState()
     let i = 0
 
-      useEffect(() => {
+    useEffect(() => {
 
 
         if (linearInfinit.length > 0) {
@@ -58,12 +58,10 @@ const LinearInfinity = ({ linearInfinit, time, backEnd }) => {
         else {
             console.error("linearInfinit")
         }
-
     }, [linearInfinit])
 
     return (
         <div>
-            <h1>Linear Infinity</h1>
             <Display display={display} result={result} backEnd={backEnd}></Display>
         </div>
     );

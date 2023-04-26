@@ -182,6 +182,20 @@ const Calcul = () => {
             <Navbar></Navbar>
             <h1>Calcul</h1>
             <br></br>
+            <h1>WORK IN PROGRESS</h1>
+
+
+        </div>
+    );
+};
+
+export default Calcul;
+
+
+/*** *
+ * 
+ * 
+ 
 
             <Checkbox
                 label="+"
@@ -220,19 +234,13 @@ const Calcul = () => {
 
             <br></br>
 
-        </div>
-    );
-};
-
-export default Calcul;
 
 
-/*** *
- * 
- * 
- 
+
+            PREMIERE PARTIE
 
 
+            
     const [nbrDigits, setNbrDigits] = useState([]);
     const addDigit = () => {
         setNbrDigits(cur => [...cur, 0]);
