@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import Display from '../../../../components/display/Display';
 
-const LinearInfinity = ({linearInfinit, time}) => {
+const LinearInfinity = ({ linearInfinit, time, backEnd }) => {
 
     const [display, setDisplay] = useState('')
     const [result, setResult] = useState()
@@ -64,8 +64,7 @@ const LinearInfinity = ({linearInfinit, time}) => {
     return (
         <div>
             <h1>Linear Infinity</h1>
-            <Display display={display} result={result}></Display>
-            
+            <Display display={display} result={result} backEnd={backEnd}></Display>
         </div>
     );
 };

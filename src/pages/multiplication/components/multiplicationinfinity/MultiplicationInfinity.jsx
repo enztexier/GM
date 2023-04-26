@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import Display from '../../../../components/display/Display';
 
-const MultiplicationInfinity = ({ infinityShuffle, time }) => {
+const MultiplicationInfinity = ({ infinityShuffle, time, backEnd }) => {
 
     const [display, setDisplay] = useState('')
     const [result, setResult] = useState()
@@ -85,8 +85,7 @@ const MultiplicationInfinity = ({ infinityShuffle, time }) => {
     return (
         <div>
             <h1>Shuffle infinity</h1>
-            <Display display={display} result={result}></Display>
-
+            <Display display={display} result={result} backEnd={backEnd}></Display>
         </div>
     );
 };

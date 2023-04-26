@@ -61,8 +61,6 @@ const Multiplication = () => {
     const [infinityShuffle, setInfinitySuffle] = useState(false)
     const [linearInfinit, setLinearInfinit] = useState(false)
 
-
-
     const liste = Object.keys(tableState)
         .map((val, i) =>
             <Checkbox
@@ -137,6 +135,9 @@ const Multiplication = () => {
         setShuffledArray([]);
         setSelectTable([]);
         setTime(2);
+        setTableState(table);
+        setInfinitySuffle(false);
+        setLinearInfinit(false);
     }
 
     return (
@@ -148,25 +149,20 @@ const Multiplication = () => {
                 {liste}
             </div>
 
-
             <Range time={time} setTime={setTime}></Range>
             <h1>{time} secondes</h1>
 
+            <div className='box-mode'>
+            <Button onClick={shuffleMachine}>aléatoire</Button>
+            <Button onClick={suffleInfinity}>aléatoire infinie</Button>
+            <Button onClick={linearInfinity}>linéaire infinie</Button>
+            </div>
 
+            {shuffledArray.length > 0 && <div className='superposition'> <Shuffle shuffledArray={shuffledArray} time={time} backEnd={backEnd}></Shuffle> </div>}
 
-            <Button onClick={shuffleMachine}>shuffle</Button>
-            <Button onClick={suffleInfinity}>infinity shuffle</Button>
-            <Button onClick={linearInfinity}>infinity linear</Button>
+            {infinityShuffle.length > 0 && <div className='superposition'> <MultiplicationInfinity infinityShuffle={infinityShuffle} time={time} backEnd={backEnd}></MultiplicationInfinity> </div>}
 
-
-
-            {shuffledArray.length > 0 && <div className='superposition'> <Shuffle backEnd={backEnd} shuffledArray={shuffledArray} time={time}></Shuffle> </div>}
-
-            {infinityShuffle.length > 0 && <MultiplicationInfinity infinityShuffle={infinityShuffle} time={time}></MultiplicationInfinity>}
-
-            {linearInfinit.length > 0 && <LinearInfinity linearInfinit={linearInfinit} time={time}></LinearInfinity>}
-
-
+            {linearInfinit.length > 0 && <div className='superposition'> <LinearInfinity linearInfinit={linearInfinit} time={time} backEnd={backEnd}></LinearInfinity> </div>}
 
         </div>
     );
