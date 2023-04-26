@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import Display from '../../../../components/display/Display';
 
-const Shuffle = ({ shuffledArray, time }) => {
+const Shuffle = ({ shuffledArray, time, backEnd }) => {
 
     const [display, setDisplay] = useState('')
     const [result, setResult] = useState()
@@ -66,9 +66,7 @@ const Shuffle = ({ shuffledArray, time }) => {
     return (
         <div>
             <h1>Shuffle</h1>
-            <Display display={display} result={result}></Display>
-
-
+            <Display backEnd={backEnd} display={display} result={result}></Display>
 
         </div>
     );

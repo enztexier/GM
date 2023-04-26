@@ -90,7 +90,7 @@ const Multiplication = () => {
         }
     }
 
-    const suffleMachine = () => {
+    const shuffleMachine = () => {
 
         let temporary = [];
 
@@ -132,7 +132,12 @@ const Multiplication = () => {
         setLinearInfinit(temporary)
     }
 
-    console.log(selectTable)
+    const backEnd = () => {
+        console.log("hello back");
+        setShuffledArray([]);
+        setSelectTable([]);
+        setTime(2);
+    }
 
     return (
         <div>
@@ -148,16 +153,18 @@ const Multiplication = () => {
             <h1>{time} secondes</h1>
 
 
-            <Button>suffle</Button>
-            <button onClick={suffleMachine}>suffle</button>
-            <button onClick={suffleInfinity}>infinity suffle</button>
-            <button onClick={linearInfinity}>infinity linear</button>
 
-            <Shuffle shuffledArray={shuffledArray} time={time}></Shuffle>
+            <Button onClick={shuffleMachine}>shuffle</Button>
+            <Button onClick={suffleInfinity}>infinity shuffle</Button>
+            <Button onClick={linearInfinity}>infinity linear</Button>
 
-            <MultiplicationInfinity infinityShuffle={infinityShuffle} time={time}></MultiplicationInfinity>
 
-            <LinearInfinity linearInfinit={linearInfinit} time={time}></LinearInfinity>
+
+            {shuffledArray.length > 0 && <div className='superposition'> <Shuffle backEnd={backEnd} shuffledArray={shuffledArray} time={time}></Shuffle> </div>}
+
+            {infinityShuffle.length > 0 && <MultiplicationInfinity infinityShuffle={infinityShuffle} time={time}></MultiplicationInfinity>}
+
+            {linearInfinit.length > 0 && <LinearInfinity linearInfinit={linearInfinit} time={time}></LinearInfinity>}
 
 
 

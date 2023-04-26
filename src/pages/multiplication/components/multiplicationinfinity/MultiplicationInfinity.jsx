@@ -84,7 +84,7 @@ const MultiplicationInfinity = ({ infinityShuffle, time }) => {
 
     return (
         <div>
-            <h1>MultiplicationInfinity</h1>
+            <h1>Shuffle infinity</h1>
             <Display display={display} result={result}></Display>
 
         </div>
