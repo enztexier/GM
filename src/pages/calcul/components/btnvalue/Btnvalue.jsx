@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Btnvalue = ({nbr, addDigit, deleteDigit}) => {
-    console.log("BTN" + nbr)
+    //console.log("BTN" + nbr)
     return (
         <div>
             

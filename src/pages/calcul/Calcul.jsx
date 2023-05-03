@@ -108,9 +108,17 @@ const Calcul = () => {
 
 
     const addValue = () => {
-        setArrayValue(cur => [...cur, Value()])
-        console.log(arrayValue)
-        console.log(arrayValue.length)
+
+        let id = Date.now()
+        let nbr = 1
+
+        const valueObj = {
+            id: id,
+            nbr: nbr
+        }
+
+        setArrayValue(cur => [...cur, valueObj])
+        //console.log(arrayValue)
     }
 
     const deleteValue = () => {
@@ -119,15 +127,16 @@ const Calcul = () => {
     }
 
     const addDigit = (id) => {
-        setArrayValue(arrayValue[id].nbr + 1)
-        //console.log("addDigit" + arrayValue[id].nbr)
-        //arrayValue[id].nbr = 1;
+        arrayValue[id].nbr++
+        console.log("addDigit " + id)
+        console.log(arrayValue[id].nbr)
     }
 
-    const deleteDigit = () => {
-        console.log("deleteDigit")
+    const deleteDigit = (id) => {
+        arrayValue[id].nbr--
+        console.log("deleteDigit " + id)
+        console.log(arrayValue[id].nbr)
     }
-
 
 
     let randomNumber = (max) => {
@@ -161,16 +170,16 @@ const Calcul = () => {
     useEffect(() => {
 
         if (arrayValue.length > 0) {
+            //console.log("ici " + arrayValue)
             const lte = Object.keys(arrayValue)
             const lv = lte.map((id, i) =>
-                <Btnvalue key={i} nbr={arrayValue[id].nbr} addDigit={() => addDigit(id)} deleteDigit={deleteDigit}></Btnvalue>
+                <Btnvalue key={i} nbr={arrayValue[id].nbr} addDigit={() => addDigit(id)} deleteDigit={() => deleteDigit(id)}></Btnvalue>
             )
             setListeValue(lv)
         }
         else {
             console.log("arrayValue void")
         }
-
 
     }, [arrayValue])
 
@@ -182,7 +191,42 @@ const Calcul = () => {
             <Navbar></Navbar>
             <h1>Calcul</h1>
             <br></br>
-            <h1>WORK IN PROGRESS</h1>
+            <Checkbox
+                label="+"
+                value={checkedPositive}
+                onChange={handleChangeOne}
+            />
+
+            <Checkbox
+                label="-"
+                value={checkedNegative}
+                onChange={handleChangeTwo}
+            />
+
+            <Checkbox
+                label="/"
+                value={checkedDivision}
+                onChange={handleChangeThree}
+            />
+
+            <Checkbox
+                label="*"
+                value={checkedMultiplication}
+                onChange={handleChangeFour}
+            />
+
+            <br></br>
+
+
+            <button onClick={addValue}>add value</button>
+            <button onClick={deleteValue}>delete value</button>
+
+            {listeValue}
+
+            <button onClick={calculFinal}>cacul</button>
+            <p>{final}</p>
+
+            <br></br>
 
 
         </div>

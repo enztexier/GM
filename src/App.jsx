@@ -4,6 +4,7 @@ import Home from './pages/home/Home';
 import Copyright from './pages/copyright/Copyright';
 import Calcul from './pages/calcul/Calcul';
 import Multiplication from './pages/multiplication/Multiplication';
+import Lost from './pages/Lost/Lost';
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Route path="/copyright" element={<Copyright />} />
         <Route path="/calcul" element={<Calcul />} />
         <Route path="/multiplication" element={<Multiplication />} />
+        <Route path="*" element={<Lost />} />
       </Routes>
     </div>
   );
