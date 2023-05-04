@@ -13,10 +13,10 @@ const Calcul = () => {
     const [checkedMultiplication, setCheckedMultiplication] = useState(false);
     const [operator, setOperator] = useState([]);
 
-    const [nbrDigitsOne, setNbrDigitsOne] = useState([]);
     const [arrayValue, setArrayValue] = useState([]);
     const [listeValue, setListeValue] = useState([]);
 
+    const [nbrDigitsOne, setNbrDigitsOne] = useState([]);
     const [final, setFinal] = useState();
 
 
@@ -37,18 +37,17 @@ const Calcul = () => {
         setCheckedMultiplication(!checkedMultiplication);
     };
 
+
     useEffect(() => {
 
         if (checkedPositive === true) {
             operator.push('+');
             //setOperator(cur => [...cur, '+'])
-            console.log(operator);
         }
         else {
             const index = operator.indexOf('+');
             if (index > -1) {
                 operator.splice(index, 1);
-                console.log(operator);
             }
         }
 
@@ -59,14 +58,11 @@ const Calcul = () => {
         if (checkedNegative === true) {
             operator.push('-');
             //setOperator(cur => [...cur, '-'])
-            console.log(operator);
         }
         else {
             const index = operator.indexOf('-');
             if (index > -1) {
                 operator.splice(index, 1);
-                console.log(operator);
-
             }
         }
 
@@ -76,14 +72,11 @@ const Calcul = () => {
 
         if (checkedDivision === true) {
             operator.push('/');
-            console.log(operator);
         }
         else {
             const index = operator.indexOf('/');
             if (index > -1) {
                 operator.splice(index, 1);
-                console.log(operator);
-
             }
         }
 
@@ -93,13 +86,11 @@ const Calcul = () => {
 
         if (checkedMultiplication === true) {
             operator.push('*');
-            console.log(operator);
         }
         else {
             const index = operator.indexOf('*');
             if (index > -1) {
                 operator.splice(index, 1);
-                console.log(operator);
             }
         }
 
@@ -107,36 +98,53 @@ const Calcul = () => {
 
 
 
+
+
     const addValue = () => {
 
-        let id = Date.now()
-        let nbr = 1
+        if (arrayValue.length < 10) {
+            let id = Date.now()
+            let nbr = 1
 
-        const valueObj = {
-            id: id,
-            nbr: nbr
+            const valueObj = {
+                id: id,
+                nbr: nbr
+            }
+
+            setArrayValue(cur => [...cur, valueObj])
+        } else {
+            console.log("add max 10 nbr")
         }
 
-        setArrayValue(cur => [...cur, valueObj])
-        //console.log(arrayValue)
     }
 
     const deleteValue = () => {
-        setArrayValue(arrayValue.splice(-1))
-        console.log("delete")
+        const copyArr = [...arrayValue]
+        copyArr.pop()
+        setArrayValue(copyArr)
     }
 
     const addDigit = (id) => {
-        arrayValue[id].nbr++
-        console.log("addDigit " + id)
-        console.log(arrayValue[id].nbr)
+        const copyArr = [...arrayValue]
+        copyArr[id].nbr++
+        setArrayValue(copyArr)
+        console.log(copyArr[id].nbr)
     }
 
     const deleteDigit = (id) => {
-        arrayValue[id].nbr--
-        console.log("deleteDigit " + id)
-        console.log(arrayValue[id].nbr)
+
+        const copyArr = [...arrayValue]
+
+        if (copyArr[id].nbr > 1) {
+            copyArr[id].nbr--
+            setArrayValue(copyArr)
+            console.log(copyArr[id].nbr)
+        } else {
+            console.log("digit not negative")
+        }
     }
+
+
 
 
     let randomNumber = (max) => {
@@ -147,9 +155,15 @@ const Calcul = () => {
 
     const calculFinal = () => {
 
-        setInterval(() => {
+
+            console.log(arrayValue)
+
             indexRandom = randomNumber(operator.length);
             let f = operator[indexRandom];
+            console.log(f)
+
+        /*
+        setInterval(() => {
 
             console.log(nbrDigitsOne);
             let nine = nbrDigitsOne.map((n) => n + 9);
@@ -164,18 +178,19 @@ const Calcul = () => {
             setFinal(b);
 
         }, 1000);
+        */
 
     }
 
     useEffect(() => {
 
-        if (arrayValue.length > 0) {
+        if (arrayValue.length >= 0) {
             //console.log("ici " + arrayValue)
-            const lte = Object.keys(arrayValue)
-            const lv = lte.map((id, i) =>
-                <Btnvalue key={i} nbr={arrayValue[id].nbr} addDigit={() => addDigit(id)} deleteDigit={() => deleteDigit(id)}></Btnvalue>
+            const stepObj = Object.keys(arrayValue)
+            const stepBtn = stepObj.map((id) =>
+                <Btnvalue key={id} nbr={arrayValue[id].nbr} addDigit={() => addDigit(id)} deleteDigit={() => deleteDigit(id)}></Btnvalue>
             )
-            setListeValue(lv)
+            setListeValue(stepBtn)
         }
         else {
             console.log("arrayValue void")
