@@ -17,6 +17,7 @@ const Calcul = () => {
     const [listeValue, setListeValue] = useState([]);
 
     const [nbrDigitsOne, setNbrDigitsOne] = useState([]);
+    const [Digits, setDigits] = useState([]);
     const [final, setFinal] = useState();
 
 
@@ -99,7 +100,6 @@ const Calcul = () => {
 
 
 
-
     const addValue = () => {
 
         if (arrayValue.length < 10) {
@@ -112,7 +112,8 @@ const Calcul = () => {
             }
 
             setArrayValue(cur => [...cur, valueObj])
-        } else {
+        }
+        else {
             console.log("add max 10 nbr")
         }
 
@@ -125,10 +126,17 @@ const Calcul = () => {
     }
 
     const addDigit = (id) => {
+
         const copyArr = [...arrayValue]
-        copyArr[id].nbr++
-        setArrayValue(copyArr)
-        console.log(copyArr[id].nbr)
+
+        if (copyArr[id].nbr < 10) {
+            copyArr[id].nbr++
+            setArrayValue(copyArr)
+        }
+        else {
+            console.log("add max 10 digits")
+        }
+
     }
 
     const deleteDigit = (id) => {
@@ -151,16 +159,80 @@ const Calcul = () => {
         return Math.floor(Math.random() * max);
     }
 
-    let indexRandom = 0;
+
+    const callOperator = () => {
+        let indexRandom = randomNumber(operator.length);
+        let f = operator[indexRandom];
+        return f;
+    }
+
+
 
     const calculFinal = () => {
 
+        let nbrValues = arrayValue.map(val => val.nbr)
 
-            console.log(arrayValue)
+        nbrValues.map(val => {
+            switch (val) {
+                case 1:
+                    let one = Math.floor(Math.random() * (9 - 1 + 1)) + 1;
+                    setDigits(cur => [...cur, one])
+                    console.log(one)
+                    break;
+                case 2:
+                    let two = Math.floor(Math.random() * (99 - 10 + 1)) + 10;
+                    setDigits(cur => [...cur, two])
+                    console.log(two)
+                    break;
+                case 3:
+                    let three = Math.floor(Math.random() * (999 - 100 + 1)) + 100;
+                    setDigits(cur => [...cur, three])
+                    console.log(three)
+                    break;
+                case 4:
+                    let four = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
+                    setDigits(cur => [...cur, four])
+                    console.log(four)
+                    break;
+                case 5:
+                    let five = Math.floor(Math.random() * (99999 - 10000 + 1)) + 10000;
+                    setDigits(cur => [...cur, five])
+                    console.log(five)
+                    break;
+                case 6:
+                    let six = Math.floor(Math.random() * (999999 - 100000 + 1)) + 100000;
+                    setDigits(cur => [...cur, six])
+                    console.log(six)
+                    break;
+                case 7:
+                    let seven = Math.floor(Math.random() * (999999 - 100000 + 1)) + 100000;
+                    setDigits(cur => [...cur, seven])
+                    console.log(seven)
+                    break;
+                case 8:
+                    let eight = Math.floor(Math.random() * (999999 - 100000 + 1)) + 100000;
+                    setDigits(cur => [...cur, eight])
+                    console.log(eight)
+                    break;
+                case 9:
+                    let nine = Math.floor(Math.random() * (999999 - 100000 + 1)) + 100000;
+                    setDigits(cur => [...cur, nine])
+                    console.log(nine)
+                    break;
+                case 10:
+                    let ten = Math.floor(Math.random() * (999999 - 100000 + 1)) + 100000;
+                    setDigits(cur => [...cur, ten])
+                    console.log(ten)
+                    break;
+                default:
+                    console.log("no more digits");
+            }
+        })
 
-            indexRandom = randomNumber(operator.length);
-            let f = operator[indexRandom];
-            console.log(f)
+        //let b = Digits.reduce()
+        //console.log(b)
+
+
 
         /*
         setInterval(() => {
@@ -238,8 +310,11 @@ const Calcul = () => {
 
             {listeValue}
 
+
             <button onClick={calculFinal}>cacul</button>
             <p>{final}</p>
+
+            {Digits.map(val => <p key={val}>{val}{callOperator()}</p>)}
 
             <br></br>
 
