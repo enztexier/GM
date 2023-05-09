@@ -1,12 +1,12 @@
 import React from 'react';
 
-const Btnvalue = ({nbr, addDigit, deleteDigit}) => {
+const Btnvalue = ({nbr, AddDigit, DeleteDigit}) => {
     //console.log("BTN" + nbr)
     return (
         <div>
             
-            <button onClick={addDigit}>+</button>
-            <button onClick={deleteDigit}>-</button>
+            <button onClick={AddDigit}>+</button>
+            <button onClick={DeleteDigit}>-</button>
             {nbr}
             
         </div>

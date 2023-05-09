@@ -17,7 +17,7 @@ const Calcul = () => {
     const [listeValue, setListeValue] = useState([]);
 
     const [nbrDigitsOne, setNbrDigitsOne] = useState([]);
-    const [Digits, setDigits] = useState([]);
+    const [digits, setDigits] = useState([]);
     const [final, setFinal] = useState();
 
 
@@ -100,7 +100,7 @@ const Calcul = () => {
 
 
 
-    const addValue = () => {
+    const AddValue = () => {
 
         if (arrayValue.length < 10) {
             let id = Date.now()
@@ -119,13 +119,13 @@ const Calcul = () => {
 
     }
 
-    const deleteValue = () => {
+    const DeleteValue = () => {
         const copyArr = [...arrayValue]
         copyArr.pop()
         setArrayValue(copyArr)
     }
 
-    const addDigit = (id) => {
+    const AddDigit = (id) => {
 
         const copyArr = [...arrayValue]
 
@@ -139,14 +139,13 @@ const Calcul = () => {
 
     }
 
-    const deleteDigit = (id) => {
+    const DeleteDigit = (id) => {
 
         const copyArr = [...arrayValue]
 
         if (copyArr[id].nbr > 1) {
             copyArr[id].nbr--
             setArrayValue(copyArr)
-            console.log(copyArr[id].nbr)
         } else {
             console.log("digit not negative")
         }
@@ -155,20 +154,20 @@ const Calcul = () => {
 
 
 
-    let randomNumber = (max) => {
+    const RandomNumber = (max) => {
         return Math.floor(Math.random() * max);
     }
 
 
     const callOperator = () => {
-        let indexRandom = randomNumber(operator.length);
+        let indexRandom = RandomNumber(operator.length);
         let f = operator[indexRandom];
         return f;
     }
 
 
 
-    const calculFinal = () => {
+    const CalculFinal = () => {
 
         let nbrValues = arrayValue.map(val => val.nbr)
 
@@ -229,8 +228,10 @@ const Calcul = () => {
             }
         })
 
-        //let b = Digits.reduce()
-        //console.log(b)
+
+
+
+
 
 
 
@@ -250,9 +251,35 @@ const Calcul = () => {
             setFinal(b);
 
         }, 1000);
+
+
+                <p key={val}>{val}{callOperator()}</p>
         */
 
     }
+
+
+    useEffect(() => {
+
+        console.log("use")
+
+        const f = digits.map((val, i) => {
+            console.log(i)
+            console.log(digits)
+
+            if (i < digits.length) {
+                return <p key={val}>{val}{callOperator()}</p>
+            }else{
+                return <div>too big</div>;
+            }
+
+        })
+
+        console.log(f)
+        setFinal(f)
+
+    }, [digits])
+
 
     useEffect(() => {
 
@@ -260,7 +287,7 @@ const Calcul = () => {
             //console.log("ici " + arrayValue)
             const stepObj = Object.keys(arrayValue)
             const stepBtn = stepObj.map((id) =>
-                <Btnvalue key={id} nbr={arrayValue[id].nbr} addDigit={() => addDigit(id)} deleteDigit={() => deleteDigit(id)}></Btnvalue>
+                <Btnvalue key={id} nbr={arrayValue[id].nbr} AddDigit={() => AddDigit(id)} DeleteDigit={() => DeleteDigit(id)}></Btnvalue>
             )
             setListeValue(stepBtn)
         }
@@ -305,18 +332,18 @@ const Calcul = () => {
             <br></br>
 
 
-            <button onClick={addValue}>add value</button>
-            <button onClick={deleteValue}>delete value</button>
+            <button onClick={AddValue}>add value</button>
+            <button onClick={DeleteValue}>delete value</button>
 
             {listeValue}
 
 
-            <button onClick={calculFinal}>cacul</button>
-            <p>{final}</p>
-
-            {Digits.map(val => <p key={val}>{val}{callOperator()}</p>)}
+            <button onClick={CalculFinal}>cacul</button>
+            {final}
 
             <br></br>
+
+
 
 
         </div>
@@ -329,6 +356,8 @@ export default Calcul;
 /*** *
  * 
  * 
+ * 
+ *             {digits.map(val => <p key={val}>{val}{callOperator()}</p>)}
  
 
             <Checkbox
