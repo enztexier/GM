@@ -4,6 +4,7 @@ import Checkbox from '../../components/checkbox/Checkbox';
 import Value from './components/value/Value';
 import Btnvalue from './components/btnvalue/Btnvalue';
 import Navbar from '../../components/navbar/Navbar';
+import './calcul.css';
 
 const Calcul = () => {
 
@@ -176,52 +177,42 @@ const Calcul = () => {
                 case 1:
                     let one = Math.floor(Math.random() * (9 - 1 + 1)) + 1;
                     setDigits(cur => [...cur, one])
-                    console.log(one)
                     break;
                 case 2:
                     let two = Math.floor(Math.random() * (99 - 10 + 1)) + 10;
                     setDigits(cur => [...cur, two])
-                    console.log(two)
                     break;
                 case 3:
                     let three = Math.floor(Math.random() * (999 - 100 + 1)) + 100;
                     setDigits(cur => [...cur, three])
-                    console.log(three)
                     break;
                 case 4:
                     let four = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
                     setDigits(cur => [...cur, four])
-                    console.log(four)
                     break;
                 case 5:
                     let five = Math.floor(Math.random() * (99999 - 10000 + 1)) + 10000;
                     setDigits(cur => [...cur, five])
-                    console.log(five)
                     break;
                 case 6:
                     let six = Math.floor(Math.random() * (999999 - 100000 + 1)) + 100000;
                     setDigits(cur => [...cur, six])
-                    console.log(six)
                     break;
                 case 7:
                     let seven = Math.floor(Math.random() * (999999 - 100000 + 1)) + 100000;
                     setDigits(cur => [...cur, seven])
-                    console.log(seven)
                     break;
                 case 8:
                     let eight = Math.floor(Math.random() * (999999 - 100000 + 1)) + 100000;
                     setDigits(cur => [...cur, eight])
-                    console.log(eight)
                     break;
                 case 9:
                     let nine = Math.floor(Math.random() * (999999 - 100000 + 1)) + 100000;
                     setDigits(cur => [...cur, nine])
-                    console.log(nine)
                     break;
                 case 10:
                     let ten = Math.floor(Math.random() * (999999 - 100000 + 1)) + 100000;
                     setDigits(cur => [...cur, ten])
-                    console.log(ten)
                     break;
                 default:
                     console.log("no more digits");
@@ -258,25 +249,56 @@ const Calcul = () => {
 
     }
 
+    let sum = 0
+
+
+
 
     useEffect(() => {
 
-        console.log("use")
+        console.log(digits)
+        setFinal('')
 
+        //let ff = digits[0] + digits[1]
+
+        let arr = [1, 2, 3]
+
+        let o = callOperator()
+        const f = digits.map(e => sum + o + e)
+
+
+        /*
         const f = digits.map((val, i) => {
-            console.log(i)
+         let o = callOperator()
+         //console.log(i)
+         console.log(digits)
+ 
+         if (i < digits.length) {
+             console.log(o)
+             let ff = val + o + sum
+             console.log(ff)
+         }else{
+             return <div>too big</div>;
+         }}) */
+
+
+        /*
+        const f = digits.map((val, i) => {
+            //console.log(i)
             console.log(digits)
 
             if (i < digits.length) {
+                let ff = val + val
                 return <p key={val}>{val}{callOperator()}</p>
             }else{
                 return <div>too big</div>;
             }
 
         })
+        */
 
         console.log(f)
-        setFinal(f)
+        setFinal(sum)
 
     }, [digits])
 
@@ -304,32 +326,31 @@ const Calcul = () => {
         <div>
             <Navbar></Navbar>
             <h1>Calcul</h1>
-            <br></br>
-            <Checkbox
-                label="+"
-                value={checkedPositive}
-                onChange={handleChangeOne}
-            />
+            <div className='operator-box'>
+                <Checkbox
+                    label="+"
+                    value={checkedPositive}
+                    onChange={handleChangeOne}
+                />
 
-            <Checkbox
-                label="-"
-                value={checkedNegative}
-                onChange={handleChangeTwo}
-            />
+                <Checkbox
+                    label="-"
+                    value={checkedNegative}
+                    onChange={handleChangeTwo}
+                />
 
-            <Checkbox
-                label="/"
-                value={checkedDivision}
-                onChange={handleChangeThree}
-            />
+                <Checkbox
+                    label="/"
+                    value={checkedDivision}
+                    onChange={handleChangeThree}
+                />
 
-            <Checkbox
-                label="*"
-                value={checkedMultiplication}
-                onChange={handleChangeFour}
-            />
-
-            <br></br>
+                <Checkbox
+                    label="*"
+                    value={checkedMultiplication}
+                    onChange={handleChangeFour}
+                />
+            </div>
 
 
             <button onClick={AddValue}>add value</button>
@@ -337,12 +358,8 @@ const Calcul = () => {
 
             {listeValue}
 
-
             <button onClick={CalculFinal}>cacul</button>
             {final}
-
-            <br></br>
-
 
 
 
