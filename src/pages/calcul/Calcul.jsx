@@ -99,8 +99,6 @@ const Calcul = () => {
     }, [checkedMultiplication]);
 
 
-
-
     const AddValue = () => {
 
         if (arrayValue.length < 10) {
@@ -117,7 +115,6 @@ const Calcul = () => {
         else {
             console.log("add max 10 nbr")
         }
-
     }
 
     const DeleteValue = () => {
@@ -249,7 +246,6 @@ const Calcul = () => {
 
     }
 
-    let sum = 0
 
 
 
@@ -261,10 +257,27 @@ const Calcul = () => {
 
         //let ff = digits[0] + digits[1]
 
-        let arr = [1, 2, 3]
+        let sum = 0
 
         let o = callOperator()
-        const f = digits.map(e => sum + o + e)
+
+        console.log(o)
+        const f = digits.map(e =>
+            e + o
+        )
+
+
+        //console.log(e)
+
+        console.log(o)
+        console.log(digits)
+
+        /*
+                const f = digits.map(e => 
+            sum += e,
+            sum + o
+        )
+        */
 
 
         /*
@@ -298,7 +311,8 @@ const Calcul = () => {
         */
 
         console.log(f)
-        setFinal(sum)
+        console.log(sum)
+        setFinal(f)
 
     }, [digits])
 
