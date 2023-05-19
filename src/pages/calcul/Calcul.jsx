@@ -73,10 +73,10 @@ const Calcul = () => {
     useEffect(() => {
 
         if (checkedDivision === true) {
-            operator.push('/');
+            operator.push('÷');
         }
         else {
-            const index = operator.indexOf('/');
+            const index = operator.indexOf('÷');
             if (index > -1) {
                 operator.splice(index, 1);
             }
@@ -87,10 +87,10 @@ const Calcul = () => {
     useEffect(() => {
 
         if (checkedMultiplication === true) {
-            operator.push('*');
+            operator.push('×');
         }
         else {
-            const index = operator.indexOf('*');
+            const index = operator.indexOf('×');
             if (index > -1) {
                 operator.splice(index, 1);
             }
@@ -255,28 +255,29 @@ const Calcul = () => {
         console.log(digits)
         setFinal('')
 
-        //let ff = digits[0] + digits[1]
-
         let sum = 0
 
-        let o = callOperator()
+        console.log()
+        const f = digits.forEach((e, index) => {
 
-        console.log(o)
-        const f = digits.map(e =>
-            e + o
-        )
-
-
-        //console.log(e)
-
-        console.log(o)
-        console.log(digits)
+            if (index === digits.length - 1) {
+                console.log("stop At " + digits.at(-1))
+                return sum += e
+            } else {
+                console.log("dos")
+                return sum += e + callOperator()
+            }
+        })
 
         /*
                 const f = digits.map(e => 
             sum += e,
             sum + o
+
+            sum += e + callOperator()
         )
+
+    
         */
 
 
@@ -312,7 +313,7 @@ const Calcul = () => {
 
         console.log(f)
         console.log(sum)
-        setFinal(f)
+        setFinal(sum)
 
     }, [digits])
 
@@ -354,13 +355,13 @@ const Calcul = () => {
                 />
 
                 <Checkbox
-                    label="/"
+                    label="÷"
                     value={checkedDivision}
                     onChange={handleChangeThree}
                 />
 
                 <Checkbox
-                    label="*"
+                    label="×"
                     value={checkedMultiplication}
                     onChange={handleChangeFour}
                 />
